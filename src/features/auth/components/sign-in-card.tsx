@@ -17,23 +17,22 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import Link from "next/link";
+import { loginSchema } from "../schema/schemas";
+import { useLogin } from "../api/use-login";
 
 export const SignInCard = () => {
-  const formScheama = z.object({
-    email: z.string().email(),
-    password: z.string().min(8, "Minimum of 8 charactors required"),
-  });
+  const { mutate } = useLogin();
 
   const form = useForm({
-    resolver: zodResolver(formScheama),
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  const handleSubmit = (values: z.infer<typeof formScheama>) => {
-    console.log(values, "values");
+  const handleSubmit = (values: z.infer<typeof loginSchema>) => {
+    mutate({ json: values });
   };
 
   return (
