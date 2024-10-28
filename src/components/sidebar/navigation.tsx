@@ -34,5 +34,11 @@ const routes = [
 ];
 
 export const Navigation = () => {
-  return <div>Hello</div>;
+  return (
+    <div>
+      {routes.map((route) => (
+        <div key={route.label}>{route.label}</div>
+      ))}
+    </div>
+  );
 };
