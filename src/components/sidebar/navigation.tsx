@@ -37,7 +37,9 @@ export const Navigation = () => {
   return (
     <div>
       {routes.map((route) => (
-        <div key={route.label}>{route.label}</div>
+        <div className="bg-red-400" key={route.label}>
+          {route.label}
+        </div>
       ))}
     </div>
   );
