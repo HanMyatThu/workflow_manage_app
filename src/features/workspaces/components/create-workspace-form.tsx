@@ -34,7 +34,9 @@ export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
   });
 
   const onSubmit = async (values: z.infer<typeof createWorkspacesSchema>) => {
-    mutate({ json: values });
+    try {
+      mutate({ json: values });
+    } catch {}
   };
 
   return (
