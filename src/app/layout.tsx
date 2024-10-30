@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { QueryProvider } from "@/providers/query-provider";
 
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const font = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(font.className, "antialiased min-h-screen")}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          {children}
+          <Toaster />
+        </QueryProvider>
       </body>
     </html>
   );
