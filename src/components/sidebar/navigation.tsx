@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { SettingsIcon, UsersIcon } from "lucide-react";
 import {
   GoCheckCircle,
@@ -5,6 +7,7 @@ import {
   GoHome,
   GoHomeFill,
 } from "react-icons/go";
+import { cn } from "@/lib/utils";
 
 const routes = [
   {
@@ -17,30 +20,43 @@ const routes = [
     label: "My Tasks",
     href: "/tasks",
     icon: GoCheckCircle,
-    active: GoCheckCircleFill,
+    activeIcon: GoCheckCircleFill,
   },
   {
     label: "Settings",
     href: "/settings",
     icon: SettingsIcon,
-    active: SettingsIcon,
+    activeIcon: SettingsIcon,
   },
   {
     label: "Members",
     href: "/members",
     icon: UsersIcon,
-    active: UsersIcon,
+    activeIcon: UsersIcon,
   },
 ];
 
 export const Navigation = () => {
   return (
-    <div>
-      {routes.map((route) => (
-        <div className="bg-red-400" key={route.label}>
-          {route.label}
-        </div>
-      ))}
-    </div>
+    <ul className="flex flex-col">
+      {routes.map((route) => {
+        const isActive = false;
+        const Icon = isActive ? route.activeIcon : route.icon;
+
+        return (
+          <Link href={route.href} key={route.href}>
+            <div
+              className={cn(
+                "flex items-center gap-2.5 p-2.5 rounded-md font-medium hover:text-primary transition text-neutral-500",
+                isActive && "bg-white shadow-sm hover:opacity-100 text-primary"
+              )}
+            >
+              <Icon className="size-5 text-neutral-500" />
+              {route.label}
+            </div>
+          </Link>
+        );
+      })}
+    </ul>
   );
 };

@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 
 import { getCurrent } from "@/features/auth/actions";
-import { UserButton } from "@/features/auth/components/user-button";
 
 const HomePage = async () => {
   const account = await getCurrent();
@@ -12,7 +11,7 @@ const HomePage = async () => {
 
   return (
     <div>
-      <UserButton />
+      This is a home HomePage <span>hi</span>
     </div>
   );
 };
