@@ -12,6 +12,17 @@ body {
   }
 }
 
+.hide-scrollbar {
+  /* IE and edge */
+  -ms-overflow-style: none;
+  /* firefox */
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::--webkit-scrollbar {
+  display: none;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
