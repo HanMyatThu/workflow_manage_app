@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { ElementRef, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { ImageIcon, Trash2Icon } from "lucide-react";
 
 import {
   Form,
@@ -17,12 +19,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DottedSeparator } from "@/components/common/dotted-separator";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 import { createWorkspacesSchema } from "../schema";
 import { useCreateWorkspace } from "../api/use-create-workspace";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import Image from "next/image";
-import { ImageIcon, Trash2Icon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface CreateWorkspaceFormProps {
   onCancel?: () => void;
@@ -170,6 +171,7 @@ export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
                 disabled={isPending}
                 onClick={onCancel}
                 type="button"
+                className={cn(!onCancel && "invisible")}
               >
                 Cancel
               </Button>
