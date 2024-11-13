@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import { cn } from "@/lib/utils";
 import { QueryProvider } from "@/providers/query-provider";
@@ -23,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(font.className, "antialiased min-h-screen")}>
         <QueryProvider>
-          {children}
+          <NuqsAdapter>{children}</NuqsAdapter>
           <Toaster />
         </QueryProvider>
       </body>
