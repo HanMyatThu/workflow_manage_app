@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
-import { getCurrent } from "@/features/auth/actions";
-import { getMyWorkspaces } from "@/features/workspaces/actions";
+import { getCurrent } from "@/features/auth/queries";
+import { getMyWorkspaces } from "@/features/workspaces/queries";
 
 const HomePage = async () => {
   const user = await getCurrent();
