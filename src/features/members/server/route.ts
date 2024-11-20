@@ -116,6 +116,10 @@ const app = new Hono()
         return c.json({ error: "Unauthorized access" }, 401);
       }
 
+      if (member.$id === memberToUpdate.$id) {
+        return c.json({ error: "You cannot modify yourself" }, 401);
+      }
+
       await databases.updateDocument(DATABASE_ID, MEMBER_ID, memberId, {
         role,
       });
